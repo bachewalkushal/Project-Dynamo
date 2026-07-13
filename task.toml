@@ -1,0 +1,26 @@
+artifacts = [
+    "output/report.log"
+]
+
+[task]
+name = "dynamo/log-report"
+description = "Analyze the system logs and generate a formatted report tracking specific errors and throughput metrics."
+
+[verifier]
+timeout_sec = 300
+
+[metadata]
+category = "data_analysis"
+subcategory = "log_parsing"
+task_objective = "Parse raw server logs, extract specific error patterns, and compile them into a standardized report file."
+artifact_type = "log_file"
+expert_time_estimate_hours = 1.0
+model_tested = "gpt-4o"
+agent_tested = "swe-agent"
+difficulty_explanation = "Requires handling irregular whitespace in log formatting and implementing robust date-time sorting logic."
+solution_explanation = "The agent must write a bash or python script to iterate over the log directory, filter by target regex patterns, and output a clean log report."
+verification_explanation = "The verifier runs pytest to ensure the artifact exists, follows the correct structural syntax, and contains the exact expected analytical calculations."
+
+[environment]
+allow_internet = false
+mcp_servers = []
